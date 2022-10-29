@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>Dig a Well - Home</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="/public/style.css" />
+    <link rel="icon" type="image/png" href="/public/well_1.png" sizes="32x32">
+    <link href="/public/LineIcons.css" rel="stylesheet">
+  </head>
+  <body onload = "initMap()">
+    <table width='100%' border='0' cellpadding="5px">
+      <tr> 
+      <td align='left' width='20%'> &nbsp;&nbsp; <a style="text-decoration: none;" href="/"><img width="22px" height="23px" src="/public/well_1.png" alt="Logo"> &nbsp; <font style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;" size="5" color='#0d6bc3'><strong> Dig a Well </strong></font> </a></td>    
+      <td border="1px" bordercolor="#bcbcbc" align='center' width='60%'><strong> <a style="text-decoration: none;" href="/"><img width="22px" height="23px" src="/public/well_2.png" alt="Logo"><font size="3" color='#4a6e87'> - Digging hasn't begun</font></a> &nbsp;&nbsp;&nbsp;&nbsp; <a style="text-decoration: none;" href="/"><img width="22px" height="23px" src="/public/well_3.png" alt="Logo"> <font size="3" color='#4a6e87'>- Digging in progress</font></a> &nbsp;&nbsp;&nbsp;&nbsp;  <a style="text-decoration: none;" href="/"><img width="22px" height="23px" src="/public/well_1.png" alt="Logo"><font size="3" color='#4a6e87'> - Waterhole is Complete</font></a></strong></td>
+      <td align='right' valign="center" width='20%'> <a href="" id="url" style="text-decoration: none;" title="Add New Well" onclick="popUp('/views/dig.html','Add New Well');"> <font style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;" size="5" color='black'><strong> + <font size="5" color='#0000'>Add</font></strong></font> </a> &nbsp;&nbsp;&nbsp; <a href="/about" id="about" style="text-decoration: none;"> <font size="5" color='black'><strong> <i class="lni-website"></i></strong></font> </a> &nbsp;&nbsp;&nbsp;</td>
+      </tr>
+      </table>
+      <hr>
+    </br>
+    <div id = "map" style = "width:100%; height:100%;"></div>
+    <script src="/public/jquery.js"></script>
+      <script>
+
+        function initMap() {
+          // Initialize Google Maps
+          const mapOptions = {
+            center:new google.maps.LatLng(3.0303, 30.9073),
+            zoom: 9,
+            mapTypeId:  google.maps.MapTypeId.ROADMAP,
+            mapId: '1a62db0dd534b7a1'
+          }
+
+          const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+          // Load JSON Data
+          let query=0;
+
+          $.getJSON('/data/well_locations.json')
+          .done((items)=>{
+
+          let marker_locations = items.well_locations;
+      
+          // Initialize Google Markers
+          for(mark of marker_locations) {
+            let marker = new google.maps.Marker({
+              map: map,
+              position: new google.maps.LatLng(mark.latitude, mark.longitude),
+              icon: mark.markerImage,
+              title: `${mark.information}, ${mark.location}, (Beneficiaries: ${mark.beneficiaries} families)`
+            })
+          }
+
+          })
+          .fail(()=>{
+          document.write("Problem processing data file.");
+          });
+
+        }
+
+      </script>
+      <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBYu7839Izd8zz8F_OAvGUBMt098pin3II&callback=initMap"></script>
+      <script>
+            function popUp(url, name){
+              var left = (screen.width-600)/2;
+              var top = (screen.height-600)/4;
+        
+              // Launch Start URL
+              (function(){
+               window.open(url, name, 'directories=no, status=no, scrollbars=no, resizable=no, copyhistory=no, menubar=no,width=600,height=600,toolbar=no,location=no,left='+left+',top='+top);
+               }());
+  
+            }
+      </script>
+  </body>
+</html>
+
