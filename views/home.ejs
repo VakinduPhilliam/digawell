@@ -10,7 +10,7 @@
     <table width='100%' border='0' cellpadding="5px">
       <tr> 
       <td align='left' width='20%'> &nbsp;&nbsp; <a style="text-decoration: none;" href="/"><img width="22px" height="23px" src="/public/well_1.png" alt="Logo"> &nbsp; <font style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;" size="5" color='#0d6bc3'><strong> Dig a Well </strong></font> </a></td>    
-      <td border="1px" bordercolor="#bcbcbc" align='center' width='60%'><strong> <a style="text-decoration: none;" href="/"><img width="22px" height="23px" src="/public/well_2.png" alt="Logo"><font size="3" color='#4a6e87'> - Digging hasn't begun</font></a> &nbsp;&nbsp;&nbsp;&nbsp; <a style="text-decoration: none;" href="/"><img width="22px" height="23px" src="/public/well_3.png" alt="Logo"> <font size="3" color='#4a6e87'>- Digging in progress</font></a> &nbsp;&nbsp;&nbsp;&nbsp;  <a style="text-decoration: none;" href="/"><img width="22px" height="23px" src="/public/well_1.png" alt="Logo"><font size="3" color='#4a6e87'> - Waterhole is Complete</font></a></strong></td>
+      <td border="1px" bordercolor="#bcbcbc" align='center' width='60%'><strong> <a style="text-decoration: none;" href="/?t=3"><img width="22px" height="23px" src="/public/well_2.png" alt="Logo"><font size="3" color='#4a6e87'> - Digging hasn't begun</font></a> &nbsp;&nbsp;&nbsp;&nbsp; <a style="text-decoration: none;" href="/?t=1"><img width="22px" height="23px" src="/public/well_3.png" alt="Logo"> <font size="3" color='#4a6e87'>- Digging in progress</font></a> &nbsp;&nbsp;&nbsp;&nbsp;  <a style="text-decoration: none;" href="/?t=2"><img width="22px" height="23px" src="/public/well_1.png" alt="Logo"><font size="3" color='#4a6e87'> - Waterhole is Complete</font></a></strong></td>
       <td align='right' valign="center" width='20%'> <a href="" id="url" style="text-decoration: none;" title="Add New Well" onclick="popUp('/views/dig.html','Add New Well');"> <font style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;" size="5" color='black'><strong> + <font size="5" color='#0000'>Add</font></strong></font> </a> &nbsp;&nbsp;&nbsp; <a href="/about" id="about" style="text-decoration: none;"> <font size="5" color='black'><strong> <i class="lni-website"></i></strong></font> </a> &nbsp;&nbsp;&nbsp;</td>
       </tr>
       </table>
@@ -19,6 +19,9 @@
     <div id = "map" style = "width:100%; height:100%;"></div>
     <script src="/public/jquery.js"></script>
       <script>
+
+        var q ='<%= t %>';
+        const t = parseInt(q);
 
         function initMap() {
           // Initialize Google Maps
@@ -37,7 +40,26 @@
           $.getJSON('/data/well_locations.json')
           .done((items)=>{
 
-          let marker_locations = items.well_locations;
+          let marker_locations=[];
+
+          // If no query parameters, plot all marker locations
+          if(!t){
+
+          marker_locations = items.well_locations;
+
+          } else {
+
+            // Else, filter out specific marker locations based on parameter
+
+            let all_markers = items.well_locations;
+
+            for(let specic_markers of all_markers){
+              if(specic_markers.status==t){
+                marker_locations.push(specic_markers);
+              }
+            }
+
+          }
       
           // Initialize Google Markers
           for(mark of marker_locations) {

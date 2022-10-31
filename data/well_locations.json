@@ -10,7 +10,7 @@
     "beneficiaries": "100",
     "country": "Uganda",
     "date": "2022-10-26T10:56:18.246Z",
-    "status": 0
+    "status": 3
     },
     {
     "location": "Oluko",
@@ -49,7 +49,7 @@
     "beneficiaries": "30",
     "country": "Uganda",
     "date": "2022-10-26T10:56:18.246Z",
-    "status": 0
+    "status": 3
     },
     {
     "location": "Obonyi",
@@ -88,7 +88,7 @@
     "beneficiaries": "102",
     "country": "Uganda",
     "date": "2022-10-26T10:56:18.246Z",
-    "status": 0
+    "status": 3
     },
     {
     "location": "Atyak",
@@ -127,7 +127,7 @@
     "beneficiaries": "31",
     "country": "Uganda",
     "date": "2022-10-26T10:56:18.246Z",
-    "status": 0
+    "status": 3
     },
     {
     "location": "Pangere",
@@ -166,7 +166,7 @@
     "beneficiaries": "23",
     "country": "Uganda",
     "date": "2022-10-26T10:56:18.246Z",
-    "status": 0
+    "status": 3
     }
     ,
     {
@@ -206,7 +206,7 @@
     "beneficiaries": "54",
     "country": "Uganda",
     "date": "2022-10-26T10:56:18.246Z",
-    "status": 0
+    "status": 3
     },
     {
     "location": "Kingbara",
@@ -245,7 +245,7 @@
     "beneficiaries": "73",
     "country": "Uganda",
     "date": "2022-10-26T10:56:18.246Z",
-    "status": 0
+    "status": 3
     },
     {
     "location": "Palabek",
@@ -284,7 +284,7 @@
     "beneficiaries": "132",
     "country": "Uganda",
     "date": "2022-10-26T10:56:18.246Z",
-    "status": 0
+    "status": 3
     },
     {
     "location": "Laguti",
@@ -323,7 +323,7 @@
     "beneficiaries": "180",
     "country": "Uganda",
     "date": "2022-10-26T10:56:18.246Z",
-    "status": 0
+    "status": 3
     },
     {
     "location": "Anaka",

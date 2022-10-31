@@ -7,9 +7,11 @@ module.exports = {
 
     // Object function to load front page.
     indexPage: (req, res) => {
+        let t = req.query.t; // Get url query
         res.render('home.ejs', {
             title: " "
-            ,message: ''
+            ,message: '',
+            t:t
         });
     },
 
@@ -48,7 +50,7 @@ module.exports = {
             beneficiaries: population,
             country: country,
             date: new Date(), // Date of signup
-            status: 0 // Status: 0 - Not dug, 1 - Work in progress, 3 - Dig completed.
+            status: 3 // Status: 3 - Not dug, 1 - Work in progress, 3 - Dig completed.
         };
 
         // Read data from file        
