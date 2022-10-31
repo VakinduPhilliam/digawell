@@ -45,7 +45,7 @@ module.exports = {
             phone: phone,
             latitude:latitude,
             longitude:longitude,
-            markerImage: "/public/well_1.png",
+            markerImage: "/public/well_2_icon.png",
             information: "Dig a Well",
             beneficiaries: population,
             country: country,
