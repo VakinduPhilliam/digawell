@@ -5,7 +5,7 @@ Dig a well is a platform built to improve access to clean water in remote commun
 
 Globally 2.3 billion people lack access to safe, readily available water and 1.5 million livestock are lost per year to acute drought (in Kenya alone). Dig a well is built to highlight deficiencies in water access.
 
-Person's living in affected communities submit a gps location of where a well needs to be dung, we verify the location. The verified location is then added to the platform's json database and plotted on google maps, where person's interested can help dig the well.
+Person's living in affected communities submit a gps location of where a well needs to be dug, we verify the location. The verified location is then added to the platform's json database and plotted on google maps, where person's interested can help dig the well.
 
 <br/>
 
