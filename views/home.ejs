@@ -69,6 +69,29 @@
               icon: mark.markerImage,
               title: `${mark.information}, ${mark.location}, (Beneficiaries: ${mark.beneficiaries} families), Call: ${mark.phone}`
             })
+            const contentString =
+            '<div id="content">' +
+            '<div id="siteNotice"><h2><b><font color="#0d6bc3">' + mark.information + '</font></b></h2></div>' +
+            '<div id="siteNotice"><img src=' + mark.markerImage + '></div>' +
+            '<div id="bodyContent">' +
+            '<p><b>Location: ' + mark.location + ', ' + mark.country + '</b></p>' +
+            '<p>Beneficiaries: ' + mark.beneficiaries + ' families</p>' +
+            '<p><i class="lni-phone-handset"></i>: &nbsp; ' + mark.phone +
+            '<p><i class="lni-envelope"></i>: &nbsp; ' + mark.email +
+            '</div>' +
+            '</div>';
+
+            const infowindow = new google.maps.InfoWindow({
+              content: contentString,
+              ariaLabel: "",
+            });       
+
+            marker.addListener("click", () => {
+              infowindow.open({
+                anchor: marker,
+                map,
+              });
+            });
           }
 
           })
